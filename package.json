@@ -1,0 +1,25 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio - Technicien Support IT avec blog intégré via Notion",
+  "author": "Fredy Mendes",
+  "license": "MIT",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"No tests configured\""
+  },
+  "keywords": [
+    "portfolio",
+    "IT support",
+    "technicien",
+    "blog"
+  ],
+  "dependencies": {
+    "@notionhq/client": "^3.0.0",
+    "dotenv": "^16.5.0",
+    "ejs": "^5.0.1",
+    "express": "^5.1.0"
+  }
+}

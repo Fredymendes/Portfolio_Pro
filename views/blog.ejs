@@ -1,0 +1,17 @@
+<%- include('partials/header', { title: 'Blog - Fredy Mendes', description: 'Blog de Fredy Mendes - Articles sur le support IT et la technologie' }) %>
+
+    <%- include('partials/nav') %>
+
+    <!-- Blog Section -->
+    <section class="blog blog-full">
+        <div class="container">
+            <h2 class="section-title">Tous les Articles</h2>
+            <div class="blog-grid" id="blog-posts">
+                <!-- Articles chargés par JS -->
+            </div>
+            <div class="blog-pagination" id="pagination"></div>
+        </div>
+    </section>
+
+    <%- include('partials/footer') %>
+    <script src="/js/blog.js"></script>
