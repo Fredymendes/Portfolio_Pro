@@ -212,7 +212,7 @@
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" action="https://formspree.io/f/xjkwgpzy" method="POST">
+                <form class="contact-form" id="contactForm" method="POST">
                     <div class="form-group">
                         <label for="name">Nom</label>
                         <input type="text" id="name" name="name" required>
@@ -228,6 +228,7 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-paper-plane"></i> Envoyer
                     </button>
+                    <p id="formNotification" style="display:none; margin-top: 12px; font-size: 0.9rem;"></p>
                 </form>
             </div>
         </div>

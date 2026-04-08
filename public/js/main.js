@@ -205,18 +205,53 @@ if (scrollIndicator) {
     });
 }
 
-// Form validation et submit
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
         const message = document.getElementById('message').value.trim();
+        const notif = document.getElementById('formNotification');
+        const btn = contactForm.querySelector('button[type="submit"]');
 
+        // Validation
         if (!name || !email || !message) {
-            e.preventDefault();
-            alert('Veuillez remplir tous les champs');
+            notif.textContent = '✗ Veuillez remplir tous les champs.';
+            notif.style.color = '#e74c3c';
+            notif.style.display = 'block';
+            return;
         }
+
+        // Envoi
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi...';
+        notif.style.display = 'none';
+
+        try {
+            const response = await fetch('https://formspree.io/f/xjkwgpzy', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: new FormData(contactForm)
+            });
+
+            if (response.ok) {
+                notif.textContent = '✓ Message envoyé avec succès.';
+                notif.style.color = '#2ecc71';
+                contactForm.reset();
+            } else {
+                notif.textContent = '✗ Une erreur est survenue. Réessaie ou contacte-moi par email.';
+                notif.style.color = '#e74c3c';
+            }
+        } catch {
+            notif.textContent = '✗ Connexion impossible. Vérifie ta connexion internet.';
+            notif.style.color = '#e74c3c';
+        }
+
+        notif.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer';
     });
 }
 
